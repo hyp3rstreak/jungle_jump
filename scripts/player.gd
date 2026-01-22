@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var animator: AnimatedSprite2D = $AnimatedSprite2D
 
-
+signal openTreasure()
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -31,12 +31,13 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("attack"):
 		is_attacking = true
 		animator.play("attack")
-		get_tree().get_first_node_in_group("treasure").open_chest()
+		#get_tree().get_first_node_in_group("treasure").open_chest()
 		
 	if Input.is_action_just_pressed("interact"):
 		if treasure_area:
 			is_interacting = true
 			animator.play("interact")
+			emit_signal("openTreasure")
 			#treasure.AnimatedSprite2D.play("open")
 			
 		
