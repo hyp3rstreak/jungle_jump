@@ -1,6 +1,6 @@
-### Jungle_jump
+# Jungle_jump
 
-# free assets 
+### free assets 
 
 - player character coding
 - tilesets
