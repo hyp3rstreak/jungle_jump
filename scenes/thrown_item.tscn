@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkg3xfcmrntca"]
+
+[ext_resource type="Script" uid="uid://dld7c1d3hm138" path="res://scripts/thrown_item.gd" id="1_huqho"]
+[ext_resource type="Texture2D" uid="uid://pevsqva81k70" path="res://assets/world/Objects.png" id="1_vbwfu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_huqho"]
+radius = 6.0
+
+[node name="thrownItem" type="RigidBody2D"]
+collision_layer = 2
+script = ExtResource("1_huqho")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_vbwfu")
+region_enabled = true
+region_rect = Rect2(1049, 92, 11, 13)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_huqho")

@@ -5,18 +5,21 @@ extends Area2D
 var has_opened := false
 
 func _on_body_entered(body: Node2D) -> void:
-	body.treasure_area = true
-	print(body.treasure_area)
+	#body.treasure_area = true
+	#print(body.treasure_area)
+	pass
 	
 func _on_body_exited(body: Node2D) -> void:
-	body.treasure_area = false
-	print(body.treasure_area)
-
+	#body.treasure_area = false
+	#print(body.treasure_area)
+	pass
+	
 func open_chest() -> void:
 	animator.play("open")
 	
 func _ready():
-	player.connect("openTreasure", _on_open_treasure)
+	print("treasure func _ready()")
+	#player.connect("openTreasure", _on_open_treasure)
 
 func _on_open_treasure() -> void:
 	print("OPEN SESAME") 

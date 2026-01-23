@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 @onready var animator: AnimatedSprite2D = $AnimatedSprite2D
+@export var thrownItem_scene: PackedScene
+@export var throwStr := 600.0
 
 signal openTreasure()
 
@@ -31,7 +33,11 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("attack"):
 		is_attacking = true
 		animator.play("attack")
+		throw_item(get_global_mouse_position())
 		#get_tree().get_first_node_in_group("treasure").open_chest()
+	
+	
+	
 		
 	if Input.is_action_just_pressed("interact"):
 		if treasure_area:
@@ -79,3 +85,26 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	elif is_interacting:
 		is_interacting = !is_interacting
 	print("anim finish")
+	
+func throw_item(target_pos: Vector2) -> void:
+		var item = thrownItem_scene.instantiate()
+		var spawn_offset := 24
+		var direction = (target_pos-global_position).normalized()
+		
+		item.global_position = global_position + direction * spawn_offset
+		item.global_position.y -= 25
+		get_tree().current_scene.add_child(item)
+	
+		item.throw(direction*throwStr)	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
